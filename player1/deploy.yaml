@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: web
+  name: web-svc
 spec:
   selector:
     app: web
@@ -13,7 +13,7 @@ spec:
 kind: Pod
 apiVersion: v1
 metadata:
-  name: websrv
+  name: web-pod
   labels:
     app: web
 spec:
