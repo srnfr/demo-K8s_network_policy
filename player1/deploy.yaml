@@ -1,1 +1,22 @@
-
+kind: Service
+apiVersion: v1
+metadata:
+  name: web
+spec:
+  selector:
+    app: web
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+---      
+kind: Pod
+apiVersion: v1
+metadata:
+  name: websrv
+  labels:
+    app: web
+spec:
+  containers:
+    - name: websrv
+      image: nginx
