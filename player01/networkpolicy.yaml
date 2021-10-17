@@ -6,8 +6,15 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: web
+      app: target-app-who-is-applied-the-policy
+  policyTypes:
+  - Ingress
+  - Egress
   ingress:
   - from:
-    -podSelector: {}
-    -namespaceSelector: {}
+    - namespaceSelector:
+        matchLabels:
+          name: namespace-that-can-talk-to-my-app
+    - podSelector:
+        matchLabels:
+          app: pod-that-can-talk-to-my-app
