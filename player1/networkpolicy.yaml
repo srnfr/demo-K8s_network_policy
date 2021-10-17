@@ -8,4 +8,6 @@ spec:
     matchLabels:
       app: web
   ingress:
-  - {}
+  - from:
+    podSelector: {}
+    namespaceSelector: {}
