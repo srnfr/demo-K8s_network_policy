@@ -14,7 +14,7 @@ variable "k8s_version" {
   type        = string
 }
 
-resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
+resource "digitalocean_kubernetes_cluster" "cluster" {
   name    = "terraform-do-cluster" ## aussi en dur dans le github action workflow
   region  = var.region_name
   version = var.k8s_version
