@@ -10,41 +10,28 @@ variable "droplet_size" {
 variable "droplet_image" {
   type        = string
 }
-variable "prefix" {
+
+variable "node_count" {
   type        = string
 }
 
-variable "tag_name" {
-  type        = string
-}
+resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
+  name    = "terraform-do-cluster"
+  region  = var.region_name
+  ##version = "1.18.6-do.0"
 
-variable "ssh_keys" {
-  default = []
-}
+  # This default node pool is mandatory
+  node_pool {
+    name       = "default-pool"
+    size       = var.droplet_size
+    auto_scale = false
+    node_count = var.node_count
+  }
 
-resource "digitalocean_tag" "tag" {
-  name = var.tag_name
-##  lifecycle {
-##    prevent_destroy = true
-##  }
-}
 
-resource "digitalocean_droplet" "docker" {
-  image  = var.droplet_image
-  name   = "${var.prefix}-docker"
-  region = var.region_name
-  size   = var.droplet_size
-  tags               = [digitalocean_tag.tag.id]
-  monitoring         = "true"
- ## private_networking = "true"
-  ssh_keys           = var.ssh_keys
-  user_data = "${file("cloud-init.yaml")}"
-##  user_data = "#cloud-config\nruncmd:\n  - /usr/bin/docker run -d -p 80:80 sagikazarmark/dvwa"
-}
-
-resource "digitalocean_record" "docker" {
+resource "digitalocean_record" "demok8s" {
   domain = var.domain_name
   type   = "A"
-  name   = "docker"
+  name   = "demok8s"
   value  = digitalocean_droplet.docker.ipv4_address
 }
