@@ -6,6 +6,11 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  defaultBackend:
+    service:
+      name: svc-player01
+      port:
+        number: 9898
   rules:
   - http:
       paths:
