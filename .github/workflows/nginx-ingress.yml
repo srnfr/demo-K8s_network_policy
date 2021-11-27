@@ -35,6 +35,6 @@ jobs:
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 terraform-do-cluster
         
     - name: deploy 1-click Nginx Ingress Controller
-      run: doctl kubernetes 1-click install cluster --1-clicks terraform-do-cluster ingress-nginx
+      run: doctl kubernetes 1-click install terraform-do-cluster --1-clicks ingress-nginx
       
  
