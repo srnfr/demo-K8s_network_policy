@@ -1,20 +1,12 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: npplayer01
-  namespace: nsplayer01
+  namespace: default
+  name: web-allow-all-namespaces
 spec:
   podSelector:
     matchLabels:
-      app: target-app-who-is-applied-the-policy
-  policyTypes:
-  - Ingress
-  - Egress
+      app: web
   ingress:
   - from:
-    - namespaceSelector:
-        matchLabels:
-          name: namespace-that-can-talk-to-my-app
-    - podSelector:
-        matchLabels:
-          app: pod-that-can-talk-to-my-app
+    - namespaceSelector: {}
