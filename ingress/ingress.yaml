@@ -2,16 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: minimal-ingress
+  namespace: nsplayer01
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: /testpath
+      - path: /player01
         pathType: Prefix
         backend:
           service:
-            name: player01
+            name: svcplayer01
             port:
-              number: 80
+              number: 9898
