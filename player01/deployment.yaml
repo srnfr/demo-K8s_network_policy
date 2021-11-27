@@ -1,25 +1,48 @@
-kind: Service
-apiVersion: v1
+---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: svcplayer01
-  namespace: nsplayer01
+  name: deploy-player01
+  namespace: ns-player01
+  labels:
+    app: player01
 spec:
+  replicas: 3
   selector:
-    app: web
+    matchLabels:
+      app: player01
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: player01
+    spec:
+      containers:
+      - name: python-example
+        image: stefanprodan/podinfo
+        ports:
+        - containerPort: 9898
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 100m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-player01
+  namespace: ns-player01
+spec:
   type: ClusterIP
   ports:
-    - port: 9898
-    - targetPort: 9898
-
----      
-kind: Pod
-apiVersion: v1
-metadata:
-  name: web-pod
-  namespace: nsplayer01
-  labels:
-    app: web
-spec:
-  containers:
-    - name: websrv
-      image: nginx
+    - name: http
+      protocol: TCP
+      port: 9898
+      targetPort: 9898
+  selector:
+    app: player01
