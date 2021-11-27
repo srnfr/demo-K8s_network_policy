@@ -13,11 +13,14 @@ variable "droplet_image" {
 variable "node_count" {
   type        = string
 }
+variable "k8s_version" {
+  type        = string
+}
 
 resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
   name    = "terraform-do-cluster" ## aussi en dur dans le github action workflow
   region  = var.region_name
-  ##version = "1.18.6-do.0"
+  version = var.k8s_version
 
   # This default node pool is mandatory
   node_pool {
