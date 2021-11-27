@@ -10,7 +10,6 @@ variable "droplet_size" {
 variable "droplet_image" {
   type        = string
 }
-
 variable "node_count" {
   type        = string
 }
@@ -28,7 +27,6 @@ resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
     node_count = var.node_count
   }
 }
-
 
 resource "digitalocean_record" "demok8s" {
   domain = var.domain_name
