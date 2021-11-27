@@ -10,10 +10,20 @@ metadata:
   rules:
   - http:
       paths:
-      - path: /
+      - path: /1
         pathType: Prefix
         backend:
           service:
             name: svc-player01
             port:
               number: 80
+  - http:
+      paths:
+      - path: /2
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-player01
+            port:
+              number: 80
+
