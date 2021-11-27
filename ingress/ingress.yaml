@@ -9,7 +9,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /player01
+      - path: /
         pathType: Prefix
         backend:
           service:
