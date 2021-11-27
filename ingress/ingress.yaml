@@ -10,7 +10,7 @@ spec:
     service:
       name: svc-player01
       port:
-        number: 9898
+        number: 80
   rules:
   - http:
       paths:
@@ -20,4 +20,4 @@ spec:
           service:
             name: svc-player01
             port:
-              number: 9898
+              number: 80
