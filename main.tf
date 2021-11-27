@@ -15,7 +15,7 @@ variable "node_count" {
   type        = string
 }
 
-resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
+resource "digitalocean_kubernetes_cluster" "terraform-do-cluster" {
   name    = "terraform-do-cluster" ## aussi en dur dans le github action workflow
   region  = var.region_name
   ##version = "1.18.6-do.0"
@@ -27,6 +27,7 @@ resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
     auto_scale = false
     node_count = var.node_count
   }
+}
 
 
 resource "digitalocean_record" "demok8s" {
