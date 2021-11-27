@@ -2,7 +2,7 @@
 # deploy the application on a DIgitalOcean Kubernetes cluster. For description to the entire worklow, 
 # see www.digitalocean.com/docs/kubernetes/how-to/deploy-using-github-actions.
 
-name: Build, push, and deploy
+name: Deploy
 
 # Controls when the action will run.
 on:
@@ -36,36 +36,11 @@ jobs:
       uses: digitalocean/action-doctl@v2
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-    
-    # Build a Docker image of your application in your registry and tag the image with the $GITHUB_SHA.
-    ##- name: Build container image
-    ##  run: docker build -t ${{ secrets.REGISTRY_NAME }}/python-example:$(echo $GITHUB_SHA | head -c7) .
-
-    ##- name: Log in to DigitalOcean Container Registry with short-lived credentials
-    ##  run: doctl registry login --expiry-seconds 1200
-
-    ##- name: Push image to DigitalOcean Container Registry
-    ##  run: docker push ${{ secrets.REGISTRY_NAME }}/python-example:$(echo $GITHUB_SHA | head -c7)
-
-    # Deploy to DigitalOCcean Kubernetes.
-    ##- name: Update deployment file
-    ##  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/python-example:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
 
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       ##run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 terraform-do-cluster
-    
-    # If you haven't already integrated with your registry and only want workloads in a particular namespace to be able to pull 
-    # from your registry, uncomment the next two commands.
-    #- name: Upload credentials of your registry to your DigitalOcean Kubernetes cluster
-    #  run: doctl registry kubernetes-manifest | kubectl apply -f -
-    
-    - name: deploy 1-click Nginx Ingress Controller
-      run: doctl kubernetes 1-click install cluster --1-clicks terraform-do-cluster ingress-nginx
       
-    #- name: Reference the secret you just uploaded as an imagePullSecrets
-    #  run: "kubectl patch serviceaccount default -p '{\"imagePullSecrets\": [{\"name\": \"registry-<your-registry-name>`\"}]}'"
-
     - name: Deploy to DigitalOcean Kubernetes
       run: kubectl apply -f $GITHUB_WORKSPACE/player1
 
