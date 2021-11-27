@@ -1,15 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: web-svc
+  name: svcplayer01
   namespace: nsplayer01
 spec:
   selector:
     app: web
   type: ClusterIP
   ports:
-    - port: 80
-    - targetPort: 80
+    - port: 9898
+    - targetPort: 9898
 
 ---      
 kind: Pod
