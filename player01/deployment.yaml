@@ -42,7 +42,7 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 9898
+      port: 80
       targetPort: 9898
   selector:
     app: player01
