@@ -59,12 +59,15 @@ jobs:
     # from your registry, uncomment the next two commands.
     #- name: Upload credentials of your registry to your DigitalOcean Kubernetes cluster
     #  run: doctl registry kubernetes-manifest | kubectl apply -f -
+    
+    - name: deploy 1-click Nginx Ingress Controller
+      run: doctl kubernetes 1-click install cluster --1-clicks terraform-do-cluster ingress-nginx
       
     #- name: Reference the secret you just uploaded as an imagePullSecrets
     #  run: "kubectl patch serviceaccount default -p '{\"imagePullSecrets\": [{\"name\": \"registry-<your-registry-name>`\"}]}'"
 
     - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
+      run: kubectl apply -f $GITHUB_WORKSPACE/player1
 
     - name: Verify deployment
-      run: kubectl rollout status deployment/python-example
+      run: kubectl rollout status deployment -A
