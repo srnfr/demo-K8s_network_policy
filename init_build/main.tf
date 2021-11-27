@@ -31,9 +31,9 @@ resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
   }
 }
 
-resource "digitalocean_record" "demok8s" {
-  domain = var.domain_name
-  type   = "A"
-  name   = "demok8s"
-  value  = digitalocean_droplet.docker.ipv4_address
-}
+#resource "digitalocean_record" "demok8s" {
+#  domain = var.domain_name
+#  type   = "A"
+#  name   = "demok8s"
+#  value  = digitalocean_droplet.docker.ipv4_address
+#}
