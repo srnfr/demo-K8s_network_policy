@@ -1,2 +1,2 @@
 ## Modify this file everytime you want to install the nginx ingress
-foo=bar2
+foo=bar3
