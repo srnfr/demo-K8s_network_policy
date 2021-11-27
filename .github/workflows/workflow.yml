@@ -12,6 +12,7 @@ on:
       - main
     paths:
       - 'config/**'
+      - 'player*/**'
       ##- 'server.py'
       ##- 'Dockerfile'
       - '.github/workflows/**'
