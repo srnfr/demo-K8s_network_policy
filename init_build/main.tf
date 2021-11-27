@@ -27,6 +27,7 @@ resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
     auto_scale = false
     node_count = var.node_count
   }
+}
 
 
 resource "digitalocean_record" "demok8s" {
