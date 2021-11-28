@@ -22,7 +22,7 @@ spec:
         app: player01
     spec:
       containers:
-      - name: python-example
+      - name: web-example
         image: stefanprodan/podinfo
         ports:
         - containerPort: 9898
