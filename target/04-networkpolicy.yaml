@@ -11,7 +11,7 @@ spec:
   - from:
     - podSelector:
         matchLabels:
-          app: player01
+          app: monitoring
       namespaceSelector: {}
     - namespaceSelector:
          matchLabels:
