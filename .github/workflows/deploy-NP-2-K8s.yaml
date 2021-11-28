@@ -2,7 +2,7 @@
 # deploy the application on a DIgitalOcean Kubernetes cluster. For description to the entire worklow, 
 # see www.digitalocean.com/docs/kubernetes/how-to/deploy-using-github-actions.
 
-name: Deploy Network Policies
+name: Deploy Target+Players NP
 
 # Controls when the action will run.
 on:
