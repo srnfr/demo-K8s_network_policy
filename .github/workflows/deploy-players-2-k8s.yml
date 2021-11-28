@@ -7,13 +7,20 @@ name: Deploy Players NS,DEPLOY and ING
 # Controls when the action will run.
 on:
   workflow_dispatch:
+  inputs:
+    Player_Number:
+      description: 'Numero du Joueur'     
+      required: true
+      default: 'player01'
+  
   # Triggers the workflow on push request on the main branch for changes in the specified paths.
-  push:
-    branches:
-      - main
-    paths:
-      ##- 'config/**'
-      - '05-players/player*/ready.txt'
+  
+  #push:
+  #  branches:
+  #    - main
+  #  paths:
+  #    ##- 'config/**'
+  #    - '05-players/player*/ready.txt'
       ##- 'server.py'
       ##- 'Dockerfile'
       ##- '.github/workflows/**'
