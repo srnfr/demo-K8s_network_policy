@@ -2,7 +2,7 @@
 # deploy the application on a DIgitalOcean Kubernetes cluster. For description to the entire worklow, 
 # see www.digitalocean.com/docs/kubernetes/how-to/deploy-using-github-actions.
 
-name: Deploy
+name: Deploy Players NS,DEPLOY and ING
 
 # Controls when the action will run.
 on:
