@@ -8,6 +8,8 @@ spec:
     matchLabels:
       app: target
   ingress:
-    - from:
+  - ports:
+    -port : 80
+    from:
       - podSelector: {}
         namespaceSelector: {}
