@@ -13,6 +13,7 @@ on:
     paths:
       ##- 'config/**'
       - 'target/04-networkpolicy.yaml'
+      - 'players/*/*-networkpolicy.yaml'
       ##- 'server.py'
       ##- 'Dockerfile'
       ##- '.github/workflows/**'
@@ -41,8 +42,11 @@ jobs:
       ##run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 terraform-do-cluster
       
-    - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f $GITHUB_WORKSPACE/target
+    - name: Deploy to DigitalOcean Kubernetes for target
+      run: kubectl apply -f $GITHUB_WORKSPACE/target/*.yaml
 
+    - name: Deploy to DigitalOcean Kubernetes for players
+      run: kubectl apply -f $GITHUB_WORKSPACE/players/*/*.yaml
+      
     - name: Verify networkpolicies
       run: kubectl get networkpolicies -A
