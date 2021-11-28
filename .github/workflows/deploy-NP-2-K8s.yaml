@@ -2,18 +2,26 @@
 # deploy the application on a DIgitalOcean Kubernetes cluster. For description to the entire worklow, 
 # see www.digitalocean.com/docs/kubernetes/how-to/deploy-using-github-actions.
 
-name: Deploy Target+Players NP
+name: Deploy Players NP
 
-# Controls when the action will run.
 on:
+  workflow_dispatch:
+    inputs:
+      playerNumber:
+        description: 'Numero du Joueur'     
+        required: true
+        default: '01'
+        
+# Controls when the action will run.
+#on:
   # Triggers the workflow on push request on the main branch for changes in the specified paths.
-  push:
-    branches:
+#  push:
+#    branches:
       - main
-    paths:
+#    paths:
       ##- 'config/**'
-      - 'target/04-networkpolicy.yaml'
-      - 'players/*/*-networkpolicy.yaml'
+#      - 'target/04-networkpolicy.yaml'
+#      - 'players/*/*-networkpolicy.yaml'
       ##- 'server.py'
       ##- 'Dockerfile'
       ##- '.github/workflows/**'
@@ -41,12 +49,9 @@ jobs:
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       ##run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 terraform-do-cluster
-      
-    - name: Deploy to DigitalOcean Kubernetes for target
-      run: kubectl apply -f $GITHUB_WORKSPACE/target/*.yaml
 
     - name: Deploy to DigitalOcean Kubernetes for players
-      run: kubectl apply -f $GITHUB_WORKSPACE/players/*/*.yaml
+      run: kubectl apply -f $GITHUB_WORKSPACE/05-players/player${{ github.event.inputs.playerNumber }}
       
     - name: Verify networkpolicies
       run: kubectl get networkpolicies -A
