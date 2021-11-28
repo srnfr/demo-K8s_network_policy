@@ -12,7 +12,7 @@ on:
       - main
     paths:
       ##- 'config/**'
-      - '05-players/player*/**'
+      - '05-players/player*/**.yaml'
       ##- 'server.py'
       ##- 'Dockerfile'
       ##- '.github/workflows/**'
@@ -42,7 +42,7 @@ jobs:
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 terraform-do-cluster
       
     - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f $GITHUB_WORKSPACE/player01
+      run: for f in $(ls $GITHUB_WORKSPACE/05-players/player*/*-{deployment,ingress,namespace}.yaml); do kubectl apply -f $f;done
 
     - name: Verify deployment
       run: kubectl rollout status deployment -A
