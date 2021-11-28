@@ -2,7 +2,7 @@
 
 Demo for k8s NP
 
-Pour tester l'accès au service web dans le namespace nommé "playerX"
+Pour tester l'accès au service web dans le namespace du "playerX"
 
 >kubectl run test-$RANDOM --rm -it --image=alpine -- sh
  >/ # wget -qO- --timeout=2 http://svc-playerX.ns-playerX.cluster.local
