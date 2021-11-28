@@ -12,7 +12,7 @@ on:
       - main
     paths:
       ##- 'config/**'
-      - '05-players/player*/**.yaml'
+      - '05-players/player*/ready.txt'
       ##- 'server.py'
       ##- 'Dockerfile'
       ##- '.github/workflows/**'
