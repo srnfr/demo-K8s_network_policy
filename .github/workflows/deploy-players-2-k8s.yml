@@ -7,11 +7,11 @@ name: Deploy Players NS,DEPLOY and ING
 # Controls when the action will run.
 on:
   workflow_dispatch:
-  inputs:
-    Player_Number:
-      description: 'Numero du Joueur'     
-      required: true
-      default: 'player01'
+    inputs:
+      playerNumber:
+        description: 'Numero du Joueur'     
+        required: true
+        default: '01'
   
   # Triggers the workflow on push request on the main branch for changes in the specified paths.
   
@@ -50,7 +50,7 @@ jobs:
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 terraform-do-cluster
       
     - name: Deploy to DigitalOcean Kubernetes
-      run: for f in $(ls $GITHUB_WORKSPACE/05-players/player*/*-{deployment,ingress,namespace}.yaml); do kubectl apply -f $f;done
+      run: kubectl apply -f $GITHUB_WORKSPACE/05-players/player${{ github.event.inputs.playerNumber }}
 
     - name: Verify deployment
       run: kubectl rollout status deployment -A
