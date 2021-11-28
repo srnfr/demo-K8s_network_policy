@@ -1,15 +1,21 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: web-allow-all
+  name: target-microseg
   namespace: ns-target
 spec:
   podSelector:
     matchLabels:
       app: target
   ingress:
-  - ports:
-    -port : 80
-    from:
-      - podSelector: {}
-        namespaceSelector: {}
+  - from:
+    - podSelector:
+        matchLabels:
+          app: player01
+      namespaceSelector: {}
+    - namespaceSelector:
+         matchLabels:
+          app: players
+    ports:
+    - protocol: TCP
+      port: 80
