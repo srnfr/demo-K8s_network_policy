@@ -17,7 +17,7 @@ on:
   # Triggers the workflow on push request on the main branch for changes in the specified paths.
 #  push:
 #    branches:
-      - main
+#      - main
 #    paths:
       ##- 'config/**'
 #      - 'target/04-networkpolicy.yaml'
