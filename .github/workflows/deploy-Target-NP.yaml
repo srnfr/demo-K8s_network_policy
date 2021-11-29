@@ -46,7 +46,7 @@ jobs:
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 terraform-do-cluster
       
     - name: Deploy to DigitalOcean Kubernetes for target
-      run: kubectl apply -f $GITHUB_WORKSPACE/target
+      run: kubectl apply -f ./target
       
     - name: Verify networkpolicies
       run: kubectl get networkpolicies -A
