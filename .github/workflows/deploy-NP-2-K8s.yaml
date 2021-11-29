@@ -54,4 +54,4 @@ jobs:
       run: kubectl apply -f $GITHUB_WORKSPACE/05-players/player${{ github.event.inputs.playerNumber }}
       
     - name: Verify networkpolicies
-      run: kubectl get networkpolicies -A
+      run: kubectl get networkpolicies -A ; echo "---"; kubectl describe networkpolicies -A
