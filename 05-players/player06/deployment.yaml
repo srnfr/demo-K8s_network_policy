@@ -2,15 +2,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-player01
-  namespace: ns-player01
+  name: deploy-player06
+  namespace: ns-player06
   labels:
-    app: player01
+    app: player06
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: player01
+      app: player06
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       labels:
-        app: player01
+        app: player06
     spec:
       containers:
       - name: web-example
@@ -35,8 +35,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-player01
-  namespace: ns-player01
+  name: svc-player06
+  namespace: ns-player06
 spec:
   type: ClusterIP
   ports:
@@ -45,4 +45,4 @@ spec:
       port: 80
       targetPort: 9898
   selector:
-    app: player01
+    app: player06
