@@ -5,7 +5,7 @@ metadata:
   name: deploy-player10
   namespace: ns-player10
   labels:
-    app: player01
+    app: player10
 spec:
   replicas: 3
   selector:
@@ -45,4 +45,4 @@ spec:
       port: 80
       targetPort: 9898
   selector:
-    app: player01
+    app: player10
