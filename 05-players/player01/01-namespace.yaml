@@ -4,3 +4,4 @@ metadata:
   name: ns-player01
   labels:
      app: players
+     site: campus

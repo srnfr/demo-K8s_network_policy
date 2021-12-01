@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    org: client-pod
+spec:
+  containers:
+  - name: client-pod-cont
+    image: docker.io/tgraf/netperf

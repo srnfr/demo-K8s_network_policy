@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: srv-www 
+  labels:
+    type: l7-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: l7-test
+  template:
+    metadata:
+      labels:
+        type: l7-test
+    spec:
+      containers:
+      - name: srv-www
+        image: supergiantkir/cilium-l7test:v1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-www
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+  selector:
+   type: l7-test  
