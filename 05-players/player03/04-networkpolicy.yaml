@@ -13,7 +13,7 @@ spec:
         matchLabels:
           app: monitoring
       namespaceSelector:
-          matchlabels:
+          matchLabels:
             kubernetes.io/medata.name=default
     - namespaceSelector:
          matchLabels:
