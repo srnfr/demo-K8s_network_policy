@@ -1,6 +1,6 @@
-# mon commentaire
-kind: NetworkPolicy
+---
 apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
 metadata:
   name: player01-microseg
   namespace: ns-player01
@@ -15,7 +15,7 @@ spec:
           app: monitoring
       namespaceSelector: 
         matchLabels:
-          "kubernetes.io/metadata.name": default 
-   - namespaceSelector:
+          'kubernetes.io/metadata.name': default
+    - namespaceSelector:
          matchLabels:
           app: players
