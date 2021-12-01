@@ -1,0 +1,21 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: target-microseg
+  namespace: ns-player77
+spec:
+  podSelector:
+    matchLabels:
+      app: player77
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: monitoring
+      namespaceSelector: {}
+    - namespaceSelector:
+         matchLabels:
+          app: players
+    ports:
+    - protocol: TCP
+      port: 80
