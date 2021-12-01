@@ -2,15 +2,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-player01
-  namespace: ns-player01
+  name: deploy-player14
+  namespace: ns-player14
   labels:
-    app: player01
+    app: player14
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: player01
+      app: player14
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -45,4 +45,4 @@ spec:
       port: 80
       targetPort: 9898
   selector:
-    app: player01
+    app: player14
