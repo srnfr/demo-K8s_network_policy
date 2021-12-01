@@ -12,9 +12,9 @@ spec:
     - podSelector:
         matchLabels:
           app: monitoring
-      namespaceSelector:
+        namespaceSelector:
           matchLabels:
-            "kubernetes.io/metadata.name:default"
+            kubernetes.io/metadata.name:default
     - namespaceSelector:
          matchLabels:
           app: players
