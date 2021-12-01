@@ -1,6 +1,13 @@
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: ns-player03
+#  labels:
+#     app: players
+     
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ns-player03
+  name: ns-target
   labels:
-     app: players
+    app: target
