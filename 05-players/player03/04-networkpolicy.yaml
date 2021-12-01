@@ -1,8 +1,8 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: target-microseg
-  namespace: ns-target
+  name: Test_Policy_Player03
+  namespace: player03
 spec:
   podSelector:
     matchLabels:
