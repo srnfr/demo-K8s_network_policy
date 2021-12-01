@@ -1,0 +1,20 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: target-microseg
+  namespace: ns-player04
+spec:
+  podSelector:
+    matchLabels:
+      app: player04
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: monitoring
+      namespaceSelector:
+        matchlabels:
+          kubernetes.io/metadata.name: default
+    - namespaceSelector:
+         matchLabels:
+          app: players   
