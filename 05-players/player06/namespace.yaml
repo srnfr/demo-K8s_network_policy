@@ -1,1 +1,6 @@
-tjregkfdglkj
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-player06
+  labels:
+     app: players
