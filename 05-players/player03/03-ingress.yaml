@@ -14,7 +14,7 @@ spec:
         paths:
         - path: /
           pathType: Prefix
-          backend:
+         backend:
             service:
               name: svc-player03
               port:
