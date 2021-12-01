@@ -14,8 +14,8 @@ spec:
         matchLabels:
           app: monitoring
       namespaceSelector: 
-         matchLabels:
-           kubernetes.io/metadata.name: default 
+        matchLabels:
+          "kubernetes.io/metadata.name": default 
    - namespaceSelector:
          matchLabels:
           app: players
