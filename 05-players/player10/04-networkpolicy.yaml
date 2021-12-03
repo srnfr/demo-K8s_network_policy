@@ -19,5 +19,5 @@ spec:
     ports:
     - protocol: TCP
       ports: 
-        - 80
-        - 9898
+        - port: 80
+        - port: 9898
