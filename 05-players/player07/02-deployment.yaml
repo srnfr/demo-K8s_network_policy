@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: web-example
-        image: stefanprodan/podinfo:5.2.1
+        image: stefanprodan/podinfo:6.2.1
         ports:
         - containerPort: 9898
         resources:
