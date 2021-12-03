@@ -1,1 +1,21 @@
-
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ing-player05
+  namespace: ns-player05
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:  
+  rules:
+    - host: player05.randco.eu
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: svc-player05
+              port:
+                number: 80
