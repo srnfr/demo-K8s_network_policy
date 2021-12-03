@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:  
   rules:
-    - host: player01.randco.eu
+    - host: player11.randco.eu
       http:
         paths:
         - path: /
