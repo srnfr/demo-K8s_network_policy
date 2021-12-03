@@ -1,0 +1,21 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: player10-microseg
+  namespace: ns-player10
+spec:
+  podSelector:
+    matchLabels:
+      app: player10
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: monitoring
+      namespaceSelector: {}
+    - namespaceSelector:
+         matchLabels:
+          app: players
+    ports:
+    - protocol: TCP
+      port: 80
