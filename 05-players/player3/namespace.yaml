@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-player03
+  labels:
+     app: players
+     site: campus
