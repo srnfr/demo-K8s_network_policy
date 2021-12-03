@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: player03-microseg
-  namespace: ns-player03
+  name: player11-microseg
+  namespace: ns-player11
 spec:
   podSelector:
     matchLabels:
-      app: player03
+      app: player11
   ingress:
   - from:
     - podSelector:
