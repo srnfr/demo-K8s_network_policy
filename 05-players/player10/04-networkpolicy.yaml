@@ -18,4 +18,4 @@ spec:
           app: players
     ports:
     - protocol: TCP
-      port: 80
+      ports: {80, 9898}
