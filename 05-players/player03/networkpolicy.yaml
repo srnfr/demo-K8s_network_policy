@@ -12,6 +12,6 @@ spec:
          matchLabels:
           app: players
       - namespaceSelector: 
-        matchLabels:
+         matchLabels:
           'kubernetes.io/metadata.name': default
 
