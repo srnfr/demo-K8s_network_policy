@@ -18,3 +18,8 @@ spec:
     - namespaceSelector:
          matchLabels:
           app: players
+  ports:
+    - protocol: TCP
+      port: 80
+    - protocol: TCP
+      port: 9898
