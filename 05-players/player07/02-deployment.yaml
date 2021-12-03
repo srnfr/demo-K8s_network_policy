@@ -7,7 +7,7 @@ metadata:
   labels:
     app: player07
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: player07
@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: web-example
-        image: stefanprodan/podinfo:6.2.1
+        image: stefanprodan/podinfo
         ports:
         - containerPort: 9898
         resources:
