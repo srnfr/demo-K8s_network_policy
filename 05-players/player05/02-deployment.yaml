@@ -1,1 +1,48 @@
-
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-player05
+  namespace: ns-player05
+  labels:
+    app: player05
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: player05
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: player05
+    spec:
+      containers:
+      - name: web-example
+        image: stefanprodan/podinfo
+        ports:
+        - containerPort: 9898
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 100m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-player05
+  namespace: ns-player05
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 9898
+  selector:
+    app: player05
