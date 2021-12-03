@@ -2,8 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-player01
-  namespace: ns-player01
+  name: deploy-player03
+  namespace: ns-player03
   labels:
     app: player03
 spec:
