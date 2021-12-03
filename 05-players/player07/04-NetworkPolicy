@@ -6,7 +6,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: player07
+      app: target
   ingress:
   - from:
     - podSelector:
