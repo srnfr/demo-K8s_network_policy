@@ -18,4 +18,4 @@ spec:
             service:
               name: svc-player07
               port:
-                number: 8080
+                number: 80
