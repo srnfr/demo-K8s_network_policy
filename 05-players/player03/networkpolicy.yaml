@@ -7,7 +7,11 @@ spec:
     matchLabels:
       app: player03
   ingress:
-   - from:
-      - podSelector:
-          matchLabels:
-            app: player03
+   - from : 
+      - namespaceSelector:
+         matchLabels:
+          app: players
+      - namespaceSelector: 
+        matchLabels:
+          'kubernetes.io/metadata.name': default
+
