@@ -8,6 +8,9 @@ spec:
     matchLabels:
       app: player03
   ingress:
+  - ports:
+    - port: 80
+    - port: 9898
   - from:
     - podSelector:
         matchLabels:
