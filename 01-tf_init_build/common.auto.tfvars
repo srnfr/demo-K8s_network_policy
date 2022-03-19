@@ -11,4 +11,4 @@ droplet_size = "s-2vcpu-4gb"
 #ssh_keys = [ "3274777" ]
 #tag_name = "demok8"
 node_count="2"
-k8s_version="1.21.5-do.0 "
+#k8s_version="1.21.5-do.0 "
