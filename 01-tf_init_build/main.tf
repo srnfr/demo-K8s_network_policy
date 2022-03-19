@@ -17,7 +17,7 @@ variable "k8s_version" {
 resource "digitalocean_kubernetes_cluster" "cluster" {
   name    = "terraform-do-cluster" ## aussi en dur dans le github action workflow
   region  = var.region_name
-  ##version = var.k8s_version
+  version = var.k8s_version
 
   # This default node pool is mandatory
   node_pool {
