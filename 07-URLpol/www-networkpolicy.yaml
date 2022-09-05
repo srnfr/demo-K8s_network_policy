@@ -19,3 +19,5 @@ specs:
           http:
           - method: "GET"
             path: "/discount"
+          - method: "POST"
+            path: "/discount"
