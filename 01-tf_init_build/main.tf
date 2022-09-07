@@ -34,6 +34,14 @@ resource "digitalocean_kubernetes_cluster" "cluster" {
   }
 }
 
+resource "digitalocean_project" "trainingk8" {
+  name        = "trainingk8"
+  description = "Projet pour la formation"
+  purpose     = "Web Application"
+  environment = "Development"
+  resources   = digitalocean_kubernetes_cluster.cluster[*].urn
+}
+
 #resource "digitalocean_record" "demok8s" {
 #  domain = var.domain_name
 #  type   = "A"
