@@ -12,3 +12,5 @@ droplet_size = "s-2vcpu-4gb"
 #tag_name = "demok8"
 node_count="2"
 k8s_version="1.24.4-do.0 "
+##
+nb_clusters=2
