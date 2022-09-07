@@ -27,7 +27,7 @@ resource "digitalocean_kubernetes_cluster" "cluster" {
 
   # This default node pool is mandatory
   node_pool {
-    name       = "default-pool"
+    name       = "node"
     size       = var.droplet_size
     auto_scale = false
     node_count = var.node_count
