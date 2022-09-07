@@ -13,6 +13,11 @@ variable "node_count" {
 variable "k8s_version" {
   type        = string
 }
+variable "nb_clusters" {
+  type      = number
+}
+
+####
 
 resource "digitalocean_kubernetes_cluster" "cluster" {
   count = var.nb_clusters
