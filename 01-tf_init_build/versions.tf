@@ -9,6 +9,9 @@ terraform {
 
 variable "do_token" {}
 
+variable "entropy" {}
+
+
 provider "digitalocean" {
   token = var.do_token
 }
