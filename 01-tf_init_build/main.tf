@@ -1,9 +1,7 @@
 variable "region_name" {
   type        = string
 }
-#variable "domain_name" {
-#  type        = string
-#}
+
 variable "droplet_size" {
   type        = string
 }
@@ -16,12 +14,14 @@ variable "k8s_version" {
 variable "nb_clusters" {
   type      = number
 }
-
+variable "entropy" {
+  type      = string
+}
 ####
 
 resource "digitalocean_kubernetes_cluster" "cluster" {
   count = var.nb_clusters
-  name    = "k8-do-grp${count.index}-var.entropy" ## aussi en dur dans le github action workflow
+  name    = "k8-do-grp${count.index}-${var.entropy}"
   region  = var.region_name
   version = var.k8s_version
 
