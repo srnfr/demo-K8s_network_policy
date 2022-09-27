@@ -14,9 +14,7 @@ variable "k8s_version" {
 variable "nb_clusters" {
   type      = number
 }
-variable "entropy" {
-  type      = string
-}
+
 ####
 
 resource "digitalocean_kubernetes_cluster" "cluster" {
