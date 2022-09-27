@@ -21,7 +21,7 @@ variable "nb_clusters" {
 
 resource "digitalocean_kubernetes_cluster" "cluster" {
   count = var.nb_clusters
-  name    = "k8-do-grp${count.index}" ## aussi en dur dans le github action workflow
+  name    = "k8-do-grp${count.index}-var.entropy" ## aussi en dur dans le github action workflow
   region  = var.region_name
   version = var.k8s_version
 
