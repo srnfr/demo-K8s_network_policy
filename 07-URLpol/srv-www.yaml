@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: srv-www
-        image: supergiantkir/cilium-l7test:v3
+        image: supergiantkir/cilium-l7test:v1
 ---
 apiVersion: v1
 kind: Service
