@@ -14,4 +14,4 @@ node_count="2"
 # Grab the latest version slug from `doctl kubernetes options versions`
 k8s_version="1.27.4-do.0"
 ##
-nb_clusters=1
+nb_clusters=9
