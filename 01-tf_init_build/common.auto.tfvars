@@ -12,6 +12,6 @@ droplet_size = "s-2vcpu-4gb"
 #tag_name = "demok8"
 node_count="2"
 # Grab the latest version slug from `doctl kubernetes options versions`
-k8s_version="1.27.4-do.0"
+k8s_version="1.29.1-do.0"
 ##
-nb_clusters=9
+nb_clusters=3
