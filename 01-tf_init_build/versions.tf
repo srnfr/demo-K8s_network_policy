@@ -11,6 +11,8 @@ variable "do_token" {}
 
 variable "entropy" {}
 
+variable "nb_clusters" {}
+
 provider "digitalocean" {
   token = var.do_token
 }
