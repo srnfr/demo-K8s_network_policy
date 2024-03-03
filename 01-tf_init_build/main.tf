@@ -11,9 +11,11 @@ variable "node_count" {
 variable "k8s_version" {
   type        = string
 }
-variable "nb_clusters" {
-  type      = number
-}
+
+# Cette variable est maintenant stockée dans un env de Terraform
+# variable "nb_clusters" {
+#  type      = number
+#}
 
 ####
 
@@ -39,10 +41,3 @@ resource "digitalocean_project" "trainingk8" {
   environment = "Development"
   resources   = digitalocean_kubernetes_cluster.cluster[*].urn
 }
-
-#resource "digitalocean_record" "demok8s" {
-#  domain = var.domain_name
-#  type   = "A"
-#  name   = "demok8s"
-#  value  = digitalocean_droplet.docker.ipv4_address
-#}
