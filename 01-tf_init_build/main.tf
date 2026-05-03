@@ -29,8 +29,8 @@ resource "digitalocean_vpc" "vpc" {
   name     = "vpc-k8-do-grp${count.index}-${var.entropy}"
   region   = var.region_name
 
- # Associer chaque cluster à son VPC dédié
-  vpc_uuid = digitalocean_vpc.vpc[count.index].id
+  # Chaque cluster a sa propre plage /20 : 10.150.0.0/20, 10.151.0.0/20, etc.
+  ip_range = "10.${150 + count.index}.0.0/20"
 
 }
 
@@ -48,8 +48,9 @@ resource "digitalocean_kubernetes_cluster" "cluster" {
     node_count = var.node_count
   }
 
-  # Chaque cluster a sa propre plage /20 : 10.150.0.0/20, 10.151.0.0/20, etc.
-  ip_range = "10.${150 + count.index}.0.0/20"
+ # Associer chaque cluster à son VPC dédié
+  vpc_uuid = digitalocean_vpc.vpc[count.index].id
+
 }
 
 resource "digitalocean_project" "trainingk8" {
