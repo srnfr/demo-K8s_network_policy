@@ -29,8 +29,8 @@ resource "digitalocean_vpc" "vpc" {
   name     = "vpc-k8-do-grp${count.index}-${var.entropy}"
   region   = var.region_name
 
-  # Chaque cluster a sa propre plage /20 : 10.150.0.0/20, 10.151.0.0/20, etc.
-  ip_range = cidrsubnet("10.170.0.0/16", 8, count.index)  # 10.150.0.0/16, 10.151.0.0/16...
+  # Chaque cluster a sa propre plage 
+  ip_range = cidrsubnet("10.170.0.0/16", 4, count.index)
 
 }
 
@@ -52,8 +52,8 @@ resource "digitalocean_kubernetes_cluster" "cluster" {
   vpc_uuid = digitalocean_vpc.vpc[count.index].id
 
   # Subnets pods et services distincts par cluster
-  cluster_subnet = cidrsubnet("10.180.0.0/16", 8, count.index)  # 10.160.0.0/16, 10.161.0.0/16...
-  service_subnet = cidrsubnet("10.190.0.0/16", 8, count.index)  # 10.200.0.0/16, 10.201.0.0/16...
+  cluster_subnet = cidrsubnet("10.180.0.0/16", 4, count.index) 
+  service_subnet = cidrsubnet("10.190.0.0/16", 4, count.index)
 
 }
 
