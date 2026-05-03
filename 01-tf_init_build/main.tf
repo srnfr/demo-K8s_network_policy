@@ -8,14 +8,19 @@ variable "droplet_size" {
 variable "node_count" {
   type        = string
 }
+
+data "digitalocean_kubernetes_versions" "latest" {
+  version_prefix = ""
+}
+
+locals {
+  k8s_version = var.k8s_version == "latest" ? data.digitalocean_kubernetes_versions.latest.latest_version : var.k8s_version
+}
+
 variable "k8s_version" {
   type        = string
 }
 
-# Cette variable est maintenant stockée dans un env de Terraform
-# variable "nb_clusters" {
-#  type      = number
-#}
 
 ####
 # VPC dédié par cluster pour éviter les overlaps
@@ -33,7 +38,7 @@ resource "digitalocean_kubernetes_cluster" "cluster" {
   count = var.nb_clusters
   name    = "k8-do-grp${count.index}-${var.entropy}"
   region  = var.region_name
-  version = var.k8s_version
+  version = local.k8s_version
 
   # This default node pool is mandatory
   node_pool {
