@@ -24,7 +24,7 @@ variable "nb_clusters" {
 
   validation {
     condition     = var.nb_clusters >= 1 && var.nb_clusters == floor(var.nb_clusters)
-    error_message = "nb_clusters must be a positive whole number."
+    error_message = "The number of clusters must be a positive whole number."
   }
 }
 
