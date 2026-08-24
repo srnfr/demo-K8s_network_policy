@@ -15,7 +15,7 @@ variable "node_count" {
 
   validation {
     condition     = var.node_count >= 1 && var.node_count == floor(var.node_count)
-    error_message = "Node count must be a positive whole number."
+    error_message = "node_count must be a positive whole number."
   }
 }
 
@@ -25,7 +25,7 @@ variable "project_name" {
 
   validation {
     condition     = trimspace(var.project_name) != ""
-    error_message = "Project name must not be empty."
+    error_message = "project_name must not be empty."
   }
 }
 
