@@ -6,7 +6,8 @@ variable "droplet_size" {
   type        = string
 }
 variable "node_count" {
-  type        = string
+  type        = number
+  default     = 3
 }
 
 data "digitalocean_kubernetes_versions" "latest" {
