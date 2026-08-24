@@ -10,11 +10,11 @@ droplet_size = "s-4vcpu-8gb"
 #ssh_keys = [ "3274777" ]
 #tag_name = "demok8"
 
-# Le nombre de nœuds est une variable Terraform Cloud : node_count.
-# Ne pas la définir ici : une valeur dans un *.auto.tfvars écraserait la valeur du workspace TFC.
+# Nb Nodes dans chaque cluster
+node_count="3"
 
 # Grab the latest version slug from `doctl kubernetes options versions`
-k8s_version = "latest"
+k8s_version="latest"
 
 ##
 ## Maintenant utilisée en env Terraform
