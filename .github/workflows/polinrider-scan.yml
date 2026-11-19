@@ -1,0 +1,22 @@
+name: polinrider-scan
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  polinrider-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify scanner integrity
+        run: echo "58ef090e44d2f27af4f491a50c8c718fa75a9388b079193efb240aba98b7249b  .github/polinrider/polinrider_scan.py" | sha256sum -c -
+      - name: Scan repository before build or deployment
+        run: python3 -I .github/polinrider/polinrider_scan.py .
