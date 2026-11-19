@@ -23,8 +23,11 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel.
 jobs:
+  polinrider-gate:
+    uses: ./.github/workflows/polinrider-scan.yml
   # This workflow contains a single job called "build".
   deployNP:
+    needs: [polinrider-gate]
     # The type of runner that the job will run on.
     runs-on: ubuntu-latest
     
